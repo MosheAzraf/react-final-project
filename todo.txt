@@ -1,1 +1,17 @@
-[] create navbar
+
+today:
+
+
+=================================================
+
+todo:
+[] create container class for responsiveness.
+[] add basic data to reducers.
+[] presend the data from the reducers.
+
+
+=================================================
+
+status:
+[done] create navbar
+
