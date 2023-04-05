@@ -2,7 +2,7 @@ import React from 'react'
 
 const NoMatch = () => {
   return (
-    <div>No Match Found</div>
+    <div className='container'>No Match Found</div>
   )
 }
 
