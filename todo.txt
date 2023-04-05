@@ -1,2 +1,1 @@
-[] create firebase server
 [] create navbar
