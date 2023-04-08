@@ -1,19 +1,12 @@
 import React from 'react'
 
-const Product = ({product}) => {
-    //console.log("from product component:", product.customers);
-    console.log("in products:",product)
-  
-  
+const Product = ({pwc}) => {
+  console.log("single product:", pwc)
     return (
-    <div className=' grid grid-flow-col border border-solid'>
-
-        {
-            product.customers.map((customer)=> {
-                <p>id: {customer.id}</p>
-            })
-        }
-        
+    <div className='grid grid-rows-1 grid-cols-3 border border-solid m-15px'>
+      {/* <p className='grid-cols-1'>id:{pwc.id}</p> */}
+      <p className='grid-cols-1'>Product Name:{pwc.name}</p>
+      <p className='grid-cols-1'>Product Price: {pwc.price.toString()}</p>
     </div>
   )
 }

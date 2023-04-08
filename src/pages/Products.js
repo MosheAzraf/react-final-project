@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import ProductsCombobox from '../components/ProductsCombobox';
-import ProductsList from '../components/ProductsList';
+// import ProductsCombobox from '../components/ProductsCombobox';
+import ProductsWithCustomers from '../components/ProductsWithCustomers';
 
 const Products = () => {
   const purchases = useSelector(state => state.purchases.purchases);
   const customers = useSelector(state => state.customers.customers);
   const products = useSelector(state => state.products.products);
   const [productsWithCustomers, setProductsWithCustomers] = useState([]);
-  console.log("customers reducers:",customers)
-
-  //' grid grid-rows-2  border border-solid'
 
   useEffect(() => {
     const productCustomerMap = products.map(product => {
@@ -21,22 +18,22 @@ const Products = () => {
           return { customerId: customer.id, name: `${customer.firstName} ${customer.lastName}` };
         });
       
-      return { product: product.name, customers: customersWhoBoughtProduct };
+      return { ...product, customers: customersWhoBoughtProduct };
     });
     setProductsWithCustomers(productCustomerMap);
-    console.log("in useEffect:", productCustomerMap)
+    //console.log("in useEffect:", productCustomerMap)
 
   }, [customers, products, purchases])
   
   return (
     <div className="container">
-      <div>total amount of purchased products: {purchases.length}</div>
+      <h2 className=" leading-normal text-blue-600 text-center hover:underline">total amount of purchased products: {purchases.length}</h2>
       <div >
         {
-          <ProductsList productsWithCustomers={productsWithCustomers} />
+          <ProductsWithCustomers productsWithCustomers={productsWithCustomers} />
         }
         
-        <div><ProductsCombobox/></div>
+        <div></div>
       </div>
     </div>
   )
