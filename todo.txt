@@ -1,17 +1,15 @@
 
 today:
+[] create container class for responsiveness.
+[] present the data in productslist component based on the image
 
 
 =================================================
-
 todo:
-[] create container class for responsiveness.
-[] add basic data to reducers.
-[] presend the data from the reducers.
-
-
 =================================================
 
 status:
 [done] create navbar
+[done] add basic data to reducers.
+[done] presend the data from the reducers.
 
