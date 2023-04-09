@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-// import ProductsCombobox from '../components/ProductsCombobox';
 import ProductsWithCustomers from '../components/ProductsWithCustomers';
 
 const Products = () => {
