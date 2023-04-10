@@ -8,6 +8,7 @@ import Purchases from './pages/Purchases';
 import NoMatch from './pages/NoMatch';
 import EditProduct from './pages/EditProduct';
 import EditCustomer from './pages/EditCustomer';
+import Shop from './pages/Shop';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/purchases" element={<Purchases/>}/>
         <Route path="/products/:id" element={<EditProduct/>}/>
         <Route path="/customers/:id" element={<EditCustomer/>}/>
+        <Route path="/shop/:id" element={<Shop/>} />
         <Route path="*" element={<NoMatch/>}/>
       </Routes>
     </>

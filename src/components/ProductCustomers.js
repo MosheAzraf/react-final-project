@@ -1,12 +1,13 @@
-import React from 'react'
+import {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const ProductCustomers = ({pwc}) => {
     const navigate = useNavigate();
+    //const [showProductsCombobox, setShowProductsCombobox] = useState(false);
 
   return (
     <div className="container mx-auto px-4 gap-0">
-        <div className='grid grid-cols-4 underline'>
+        <div className='grid grid-cols-5 underline'>
             <p className='font-bold'>id</p>
             <p className='font-bold'>name</p>
             <p className='font-bold'>purchased at</p>
@@ -16,15 +17,17 @@ const ProductCustomers = ({pwc}) => {
             pwc.customers.length === 0 ? <p className="text text-rose-600">No one bought this product yet</p> :
             pwc.customers.map((customer) => {
                 return (
-                    <div key={customer.customerId} className="grid grid-cols-4 mt-2">
+                    <div key={customer.customerId} className="grid grid-cols-5 mt-2">
                         <p className=''>{customer.customerId}</p>
                         <p className=''>{customer.name}</p>
                         <p className=''>{customer.purchaseDate}</p>
                         <button className='hover:underline text-cyan-600' onClick={()=> navigate(`/customers/${customer.customerId}`)}>Edit Customer</button>
+                        <button className='hover:underline' onClick={()=> navigate(`/shop/${customer.customerId}`)}>Add</button>
                     </div>
                 )
             })
         }
+
     </div>
   )
 }

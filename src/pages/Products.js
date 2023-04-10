@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import ProductsWithCustomers from '../components/ProductsWithCustomers';
+import ProductsCombobox from '../components/ProductsCombobox';
 
 const Products = () => {
   const purchases = useSelector(state => state.purchases.purchases);
@@ -28,9 +29,8 @@ const Products = () => {
       <h2 className=" leading-normal text-blue-600 text-center hover:underline">total amount of purchased products: {purchases.length}</h2>
       <div >
         {
-          <ProductsWithCustomers productsWithCustomers={productsWithCustomers} />
+          <ProductsWithCustomers productsWithCustomers={productsWithCustomers}/>
         }
-        <div></div>
       </div>
     </div>
   )
