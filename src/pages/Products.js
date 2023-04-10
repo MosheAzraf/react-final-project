@@ -14,13 +14,12 @@ const Products = () => {
         .filter(purchase => purchase.productId === product.id)
         .map(purchase => {
           const customer = customers.filter(c => c.id === purchase.customerId)[0]
-          return { customerId: customer.id, name: `${customer.firstName} ${customer.lastName}` };
+          return { customerId: customer.id, name: `${customer.firstName} ${customer.lastName}`, purchaseDate: purchase.date };
         });
       
       return { ...product, customers: customersWhoBoughtProduct };
     });
     setProductsWithCustomers(productCustomerMap);
-    //console.log("in useEffect:", productCustomerMap)
 
   }, [customers, products, purchases])
   
@@ -31,7 +30,6 @@ const Products = () => {
         {
           <ProductsWithCustomers productsWithCustomers={productsWithCustomers} />
         }
-        
         <div></div>
       </div>
     </div>

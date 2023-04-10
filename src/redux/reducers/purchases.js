@@ -9,6 +9,9 @@ const initialState = {
       {
         id:"3", customerId:"3", productId:"3", date:"2023-03-28" 
       },
+      {
+        id:"4", customerId:"1", productId:"2", date:"2023-03-31"
+      }
             
     ]  
   }

@@ -1,11 +1,11 @@
 
-today:
-[] present the data to look like normal table
- - read about that here https://tailwindcss.com/docs/display#grid
 
 
 =================================================
 todo:
+ [] work on add button to add customers new products
+ [] finish edit customer page
+ [] add edit product button and work on the page as well
 =================================================
 
 status:
@@ -13,5 +13,5 @@ status:
 [done] add basic data to reducers.
 [done] presend the data from the reducers.
 [done] create container class for responsiveness.
-
-[on hold] present the data in productslist component based on the image
+[done] present the data to look like normal table
+[done] present the data in productslist component based on the image
