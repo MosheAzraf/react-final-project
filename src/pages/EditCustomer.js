@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 
 
@@ -31,6 +31,8 @@ const EditCustomer = () => {
     console.log(customerData.id);
   }
 
+  const navigate = useNavigate();
+
 
 
   return (
@@ -49,7 +51,7 @@ const EditCustomer = () => {
             <p>{customerData.city}</p>
           </div>
 
-          <button className="text-blue-600 mr-2 hover:underline" onClick={()=> setShowEditData(!showEditData)}>Edit Data</button>
+          <button className="text-blue-600 mr-2 hover:underline" onClick={()=> setShowEditData(!showEditData)}>Update Customer</button>
           <button className=" text-red-600 hover:underline" onClick={handleDelete}>Delete Customer</button>
         </div>
 
@@ -68,13 +70,11 @@ const EditCustomer = () => {
                   <p>{purchasedProduct.id}</p>
                   <p>{purchasedProduct.name}</p>
                   <p>{purchasedProduct.purchaseDate}</p>
-                  <button className="text-blue-600 hover:underline">Edit Product</button>
+                  <button className="text-blue-600 hover:underline" onClick={()=> navigate(`/editproduct/${purchasedProduct.id}`)}>Edit Product</button>
                 </div>
               )
             })
           }
-          
-
         </div>
       </div>
 

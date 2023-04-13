@@ -21,7 +21,7 @@ const ProductCustomers = ({pwc}) => {
                         <p className=''>{customer.customerId}</p>
                         <p className=''>{customer.name}</p>
                         <p className=''>{customer.purchaseDate}</p>
-                        <button className='hover:underline text-cyan-600' onClick={()=> navigate(`/customers/${customer.customerId}`)}>Edit Customer</button>
+                        <button className='hover:underline text-cyan-600' onClick={()=> navigate(`/editcustomer/${customer.customerId}`)}>Edit Customer</button>
                         <button className='hover:underline' onClick={()=> navigate(`/shop/${customer.customerId}`)}>Add</button>
                     </div>
                 )

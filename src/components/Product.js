@@ -20,7 +20,7 @@ const Product = ({pwc}) => {
           <p className=''>{pwc.name}</p>
           <p className=''>{pwc.price.toString()}</p>
           <p>{pwc.quantity}</p>
-          <button className='hover:underline text-cyan-600' onClick={()=> navigate(`/products/${pwc.id}`)}>Edit Product</button>
+          <button className='hover:underline text-cyan-600' onClick={()=> navigate(`/editproduct/${pwc.id}`)}>Edit Product</button>
         </div>
     </div>
   )

@@ -20,8 +20,8 @@ function App() {
         <Route path="/products" element={<Products/>}/>
         <Route path="/customers" element={<Customers/>}/>
         <Route path="/purchases" element={<Purchases/>}/>
-        <Route path="/products/:id" element={<EditProduct/>}/>
-        <Route path="/customers/:id" element={<EditCustomer/>}/>
+        <Route path="/editproduct/:id" element={<EditProduct/>}/>
+        <Route path="/editcustomer/:id" element={<EditCustomer/>}/>
         <Route path="/shop/:id" element={<Shop/>} />
         <Route path="*" element={<NoMatch/>}/>
       </Routes>

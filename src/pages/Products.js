@@ -36,21 +36,3 @@ const Products = () => {
 }
 
 export default Products
-
-
-
-{/* <div key={purchase.id}  className=' grid grid-flow-col border border-solid'>
-                <div className='col-span-1 border border-solid'>
-                  <ProductsList productId={purchase.productId}/>
-                  product
-                </div>
-                <div className='col-span-1 border border-solid'>
-                  customers
-                  <CustomersList  customerId={purchase.customerId}/>
-                </div>
-              </div> */}
-
-{/* <div className=' col-span-1 border border-solid'>
-          
-          </div>
-          <div className=' col-span-1 border border-solid'>customers</div> */}
