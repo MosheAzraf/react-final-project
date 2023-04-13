@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import ProductsWithCustomers from '../components/ProductsWithCustomers';
-import ProductsCombobox from '../components/ProductsCombobox';
 
 const Products = () => {
   const purchases = useSelector(state => state.purchases.purchases);

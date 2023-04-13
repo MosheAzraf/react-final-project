@@ -6,4 +6,6 @@
   @apply rounded-full py-3 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider border;
 }
 
-
+.active {
+  @apply bg-blue-700 hover:bg-blue-400 text-white font-bold;
+}

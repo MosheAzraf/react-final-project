@@ -3,8 +3,7 @@
 
 =================================================
 todo:
- [] work on add button to add customers new products
- [] finish edit customer page
+ [on hold] finish edit customer page
  [] add edit product button and work on the page as well
 =================================================
 
@@ -15,3 +14,4 @@ status:
 [done] create container class for responsiveness.
 [done] present the data to look like normal table
 [done] present the data in productslist component based on the image
+[done] work on add button to add customers new products

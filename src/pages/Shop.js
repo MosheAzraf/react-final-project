@@ -5,7 +5,9 @@ const Shop = () => {
     const {id} = useParams();
 
   return (
-    <div>Shop with customer id: {id}</div>
+    <div>Shop with customer id: {id}
+    
+    </div>
   )
 }
 
