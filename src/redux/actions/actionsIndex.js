@@ -12,9 +12,17 @@ export const delete_product = (id) => {
     }
 }
 
-export const delete_purchases = (id) => {
+export const delete_purchases_byProductId = (id) => {
     return {
-        type: "DELETE_PURCHASES",
+        type: "DELETE_PURCHASES_BY_PRODUCTID",
         payload:{id}
+    }
+}
+
+
+export const update_customer = (customer) => {
+    return {
+        type:"UPDATE_CUSTOMER",
+        payload: customer
     }
 }

@@ -7,7 +7,21 @@ const initialState = {
   }
   
   const customersReducer = (state = initialState, action) => {
-    return state
+    switch(action.type){
+      case "UPDATE_CUSTOMER":{
+        const customers = [...state.customers];
+        const index = customers.findIndex((customer)=> customer.id === action.payload.id)
+        if(index !== -1) {
+          customers[index] = {...action.payload};
+        }
+        return {...state, customers};
+      }
+
+      
+    }
+
+    
+    return state;
   };
   
   export default customersReducer;

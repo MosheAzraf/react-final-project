@@ -1,17 +1,19 @@
 import {useState, useEffect} from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { update_customer } from '../redux/actions/actionsIndex';
 
 const EditCustomer = () => {
   const {id} = useParams();
-
   const purchases = useSelector(state => state.purchases.purchases);
   const customers = useSelector(state => state.customers.customers);
   const products = useSelector(state => state.products.products);
+  const dispatch = useDispatch();
   const [customerData, setCustomerData] = useState({});
   const [customerProducts, setCustomerProducts] = useState([]);
   const [showEditData, setShowEditData] = useState(false);
+  const [updateCustomerInfo, setUpdateCustomerInfo] = useState({id:"", firstName:"", lastName:"", city:""});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const customer = customers.find((customer) => customer.id === id);
@@ -31,7 +33,33 @@ const EditCustomer = () => {
     console.log(customerData.id);
   }
 
-  const navigate = useNavigate();
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setUpdateCustomerInfo(prev => ({...prev, [name]: value}))
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const updatedFields = {};
+
+    if(updateCustomerInfo.firstName !== ""){
+      updatedFields.firstName = updateCustomerInfo.firstName;
+    }
+
+    if(updateCustomerInfo.lastName !== ""){
+      updatedFields.lastName = updateCustomerInfo.lastName;
+    }
+
+    if(updateCustomerInfo.city !== ""){
+      updatedFields.city = updateCustomerInfo.city;
+    }
+
+    const updateCustomer = {id:id, ...updatedFields}
+    dispatch(update_customer(updateCustomer));
+
+    console.log(updateCustomer);
+  }
+
 
 
 
@@ -79,9 +107,16 @@ const EditCustomer = () => {
       </div>
 
       {showEditData && 
-      <div>
-        edit
-      </div>
+      <form className='container mt-4 max-w-[20rem] grid grid-row justify-center border border-solid border-teal-600  rounded-lg' onSubmit={handleSubmit}>
+        <p>Update Customer</p>
+        <p>First Name:</p>
+        <input className='mt-2 border border-gray-500 rounded-md' onChange={handleChange} type="text" name="firstName" id=""/>
+        <p>Last Name:</p>
+        <input className='mt-2 border border-gray-500 rounded-md' onChange={handleChange} type="text" name="lastName" id=""/>
+        <p>City:</p>
+        <input className='mt-2 border border-gray-500 rounded-md' onChange={handleChange} type="text" name="city" id=''/>
+        <button type='submit' className='mt-2 mb-4 hover:underline'>Update</button>
+      </form>
       }
 
     </div>

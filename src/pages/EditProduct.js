@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
-import { useParams, useNavigate, redirect } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { update_product, delete_product, delete_purchases} from '../redux/actions/actionsIndex';
+import { update_product, delete_product, delete_purchases_byProductId} from '../redux/actions/actionsIndex';
 //useParams
 
 const EditProduct = () => {
@@ -58,7 +58,7 @@ const EditProduct = () => {
 
   const deleteProduct = () => {
     console.log(id);
-    dispatch(delete_purchases(id));
+    dispatch(delete_purchases_byProductId(id));
     dispatch(delete_product(id));
     //redirect("/purchases");
     navigate("/purchases");

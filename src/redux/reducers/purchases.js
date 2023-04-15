@@ -18,7 +18,7 @@ const initialState = {
   
   const purchasesReducer = (state = initialState, action) => {
     switch(action.type) {
-      case "DELETE_PURCHASES":{
+      case "DELETE_PURCHASES_BY_PRODUCTID":{
         const purchases = state.purchases.filter((purchase)=> purchase.productId !== action.payload.id);
         return {...state, purchases}
       }
