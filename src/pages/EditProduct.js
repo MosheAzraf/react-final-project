@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { update_product } from '../redux/actions/actionsIndex';
+import { update_product, delete_product, delete_purchases} from '../redux/actions/actionsIndex';
 //useParams
 
 const EditProduct = () => {
@@ -9,7 +9,6 @@ const EditProduct = () => {
   const products = useSelector(state => state.products.products);
   const [product, setProduct] = useState({id:"", name:"", price:"", quantity:""});
   const [updateProduct, setUpdateProduct] = useState({id:id, name:"", price:"", quantity:""})
-  const [activeEdit, setActiveEdit] = useState(false)
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -41,11 +40,11 @@ const EditProduct = () => {
     }
 
     if (updateProduct.price !== "") {
-      updatedFields.price = updateProduct.price;
+      updatedFields.price = +updateProduct.price;
     }
 
     if (updateProduct.quantity !== "") {
-      updatedFields.quantity = updateProduct.quantity;
+      updatedFields.quantity = +updateProduct.quantity;
     }
 
     const updatedProduct = { id: updateProduct.id, ...updatedFields };
@@ -57,13 +56,20 @@ const EditProduct = () => {
     setUpdateProduct({id:"", name:"", price:"", quantity:""});
   }
 
+  const deleteProduct = () => {
+    console.log(id);
+    dispatch(delete_purchases(id));
+    dispatch(delete_product(id));
+    //redirect("/purchases");
+    navigate("/purchases");
+  }
+
 
 
 
   return (
     <div className='container'>
       <div className='flex justify-center space-x-2'>
-        <button className='text-cyan-600 hover:underline' onClick={()=> setActiveEdit(!activeEdit)}>Edit Data</button>
         <button className='hover:underline' onClick={()=> navigate("/products")}>Back to Products</button>
       </div>
       
@@ -73,6 +79,7 @@ const EditProduct = () => {
         <p className='mt-2'> <span className='font-bold'>Name:</span> {product.name} </p>
         <p className='mt-2'> <span className='font-bold'>Price:</span> {product.price} </p>
         <p className='mt-2'> <span className='font-bold'>Quantity:</span> {product.quantity} </p>
+        <button className="mt-2 mb-2 text-rose-600 hover:underline" onClick={deleteProduct}>Delete Product</button>
       </div> 
 
       <form className="container mt-4 max-w-[20rem] grid grid-row justify-center border border-solid border-teal-600  rounded-lg" onSubmit={handleSubmit}>

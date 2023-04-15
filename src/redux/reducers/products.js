@@ -10,14 +10,21 @@ const initialState = {
 const productsReducer = (state = initialState, action) => {
   
   switch(action.type) {
-    case "UPDATE_PRODUCT":
+    case "UPDATE_PRODUCT": {
       const products = [...state.products];
       const index = products.findIndex((product)=> product.id === action.payload.id);
       if (index !== -1) {
         products[index] = { ...action.payload };
       }
+      return {...state, products}};
+    
+    case "DELETE_PRODUCT":{
+      const products = state.products.filter((product)=> product.id !== action.payload.id);
       return {...state, products}
+    }
 
+    
+    
     default:
       return state;
   }

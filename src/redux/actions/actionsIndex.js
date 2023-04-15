@@ -4,3 +4,17 @@ export const update_product = (product) => {
         payload:product
     }
 }
+
+export const delete_product = (id) => {
+    return {
+        type:"DELETE_PRODUCT",
+        payload: {id}
+    }
+}
+
+export const delete_purchases = (id) => {
+    return {
+        type: "DELETE_PURCHASES",
+        payload:{id}
+    }
+}
