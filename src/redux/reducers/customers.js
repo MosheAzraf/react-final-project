@@ -17,7 +17,12 @@ const initialState = {
         return {...state, customers};
       }
 
-      
+      case "DELETE_CUSTOMER": {
+        const customers = [...state.customers].filter((customer)=> customer.id !== action.payload.id);
+        return {...state, customers};
+      }
+
+
     }
 
     

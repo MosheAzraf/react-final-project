@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import { update_customer } from '../redux/actions/actionsIndex';
+import { update_customer,delete_customer, delete_purchases_byCustomerId } from '../redux/actions/actionsIndex';
 
 const EditCustomer = () => {
   const {id} = useParams();
@@ -31,6 +31,13 @@ const EditCustomer = () => {
   
   const handleDelete = () => {
     console.log(customerData.id);
+    // delete_customer, delete_purchases_byCustomerId 
+    dispatch(delete_purchases_byCustomerId(id));
+    dispatch(delete_customer(id));
+    navigate("/products");
+    
+
+
   }
 
   const handleChange = (e) => {
@@ -59,6 +66,7 @@ const EditCustomer = () => {
 
     console.log(updateCustomer);
   }
+
 
 
 

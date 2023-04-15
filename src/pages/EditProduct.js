@@ -60,8 +60,7 @@ const EditProduct = () => {
     console.log(id);
     dispatch(delete_purchases_byProductId(id));
     dispatch(delete_product(id));
-    //redirect("/purchases");
-    navigate("/purchases");
+    navigate("/products");
   }
 
 

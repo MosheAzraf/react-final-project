@@ -22,7 +22,13 @@ const initialState = {
         const purchases = state.purchases.filter((purchase)=> purchase.productId !== action.payload.id);
         return {...state, purchases}
       }
+
+      case "DELETE_PURCHASES_BY_CUSTOMERID": {
+        const purchases = state.purchases.filter((purchase)=> purchase.customerId !== action.payload.id);
+        return {...state, purchases}
+      }
     }
+    
 
     return state;
   };
