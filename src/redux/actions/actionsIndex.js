@@ -1,3 +1,5 @@
+
+//products reducer
 export const update_product = (product) => {
     return {
         type:"UPDATE_PRODUCT",
@@ -12,6 +14,7 @@ export const delete_product = (id) => {
     }
 }
 
+//purchases reducer
 export const delete_purchases_byProductId = (id) => {
     return {
         type: "DELETE_PURCHASES_BY_PRODUCTID",
@@ -26,7 +29,7 @@ export const delete_purchases_byCustomerId = (id) => {
     }
 }
 
-
+//customer reducer
 export const update_customer = (customer) => {
     return {
         type:"UPDATE_CUSTOMER",
