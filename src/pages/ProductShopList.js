@@ -1,9 +1,16 @@
 import { useState} from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
+import {update_quantity, add_purchase} from '../redux/actions/actionsIndex'
 
-const ProductShopList = () => {
-    const products = useSelector(state => state.products.products)
+
+
+const ProductShopList = ({customerId}) => {
+    const products = useSelector(state => state.products.products);
     console.log(products);
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
     const [quantities, setQuantities] = useState({});
 
     const handleQuantityChange = (productId, quantity) => {
@@ -14,8 +21,24 @@ const ProductShopList = () => {
         if(!quantities[product.id] || quantities[product.id] === 0){
             alert("cannot add product when quantity is 0")
         } else {
-            console.log(quantities[product.id])
-        }
+            console.log(quantities[product.id], product)
+        };
+
+        const date = new Date();
+        const isoString = date.toISOString();
+        const formattedDate = isoString.substring(0, 10);
+
+        const newPurchase = {id: uuidv4(), customerId: customerId, quantity:quantities[product.id], date: formattedDate }
+        console.log("new purchase:", newPurchase);
+        dispatch(update_quantity({
+            id: product.id,
+            quantity: quantities[product.id],
+          }));
+        dispatch(add_purchase(newPurchase));
+        setQuantities({ ...quantities, [product.id]: 0 });
+        navigate('/purchases')
+
+        //
     }
 
 

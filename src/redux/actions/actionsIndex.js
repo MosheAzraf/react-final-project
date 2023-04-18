@@ -14,6 +14,16 @@ export const delete_product = (id) => {
     }
 }
 
+export const update_quantity = (product) => {
+    return {
+        type: "UPDATE_QUANTITY",
+        payload: product
+    }
+};
+
+
+
+
 //purchases reducer
 export const delete_purchases_byProductId = (id) => {
     return {
@@ -28,6 +38,17 @@ export const delete_purchases_byCustomerId = (id) => {
         payload:{id}
     }
 }
+
+export const add_purchase = (purchase) => {
+    return {
+        type: "ADD_PURCHASE",
+        payload: purchase
+    }
+}
+
+
+
+
 
 //customer reducer
 export const update_customer = (customer) => {

@@ -14,7 +14,7 @@ const Products = () => {
         .filter(purchase => purchase.productId === product.id)
         .map(purchase => {
           const customer = customers.filter(c => c.id === purchase.customerId)[0]
-          return { customerId: customer.id, name: `${customer.firstName} ${customer.lastName}`, purchaseDate: purchase.date };
+          return { customerId: customer.id, name: `${customer.firstName} ${customer.lastName}`, quantity:purchase.quantity ,purchaseDate: purchase.date };
         });
       
       return { ...product, customers: customersWhoBoughtProduct };

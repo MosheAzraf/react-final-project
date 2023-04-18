@@ -23,6 +23,16 @@ const productsReducer = (state = initialState, action) => {
       return {...state, products}
     }
 
+    case "UPDATE_QUANTITY": {
+      const products = [...state.products];
+      const index = products.findIndex((product)=> product.id === action.payload.id);
+      if(index !== -1) {
+        products[index] = {...action.payload , quantity: products[index].quantity - action.payload.quantity }
+      };
+
+      return {...state, products}
+    }
+
     
     
     default:

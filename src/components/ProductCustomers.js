@@ -7,9 +7,10 @@ const ProductCustomers = ({pwc}) => {
 
   return (
     <div className="container mx-auto px-4 gap-0">
-        <div className='grid grid-cols-5 underline'>
+        <div className='grid grid-cols-6 underline'>
             <p className='font-bold'>id</p>
             <p className='font-bold'>name</p>
+            <p className='font-bold'>quantity</p>
             <p className='font-bold'>purchased at</p>
             <p className='font-bold'></p>
         </div>
@@ -17,9 +18,10 @@ const ProductCustomers = ({pwc}) => {
             pwc.customers.length === 0 ? <p className="text text-rose-600">No one bought this product yet</p> :
             pwc.customers.map((customer) => {
                 return (
-                    <div key={customer.customerId} className="grid grid-cols-5 mt-2">
+                    <div key={customer.customerId} className="grid grid-cols-6 mt-2">
                         <p className=''>{customer.customerId}</p>
                         <p className=''>{customer.name}</p>
+                        <p>{customer.quantity}</p>
                         <p className=''>{customer.purchaseDate}</p>
                         <button className='hover:underline text-cyan-600' onClick={()=> navigate(`/editcustomer/${customer.customerId}`)}>Edit Customer</button>
                         <button className='hover:underline' onClick={()=> navigate(`/shop/${customer.customerId}`)}>Add</button>
