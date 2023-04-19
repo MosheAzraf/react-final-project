@@ -12,6 +12,7 @@ const ProductShopList = ({customerId}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const [quantities, setQuantities] = useState({});
+    const [totalPrice, setTotalPrice] = useState(0);
 
     const handleQuantityChange = (productId, quantity) => {
         setQuantities({...quantities, [productId]: quantity})
@@ -28,10 +29,15 @@ const ProductShopList = ({customerId}) => {
         const isoString = date.toISOString();
         const formattedDate = isoString.substring(0, 10);
 
-        const newPurchase = {id: uuidv4(), customerId: customerId, quantity:quantities[product.id], date: formattedDate }
+        const price =  product.price *  quantities[product.id];
+        const convertedPrice = parseInt(price);
+
+        const newPurchase = {id: uuidv4(), customerId: customerId, productId:product.id,quantity:quantities[product.id], date: formattedDate, price: convertedPrice}
         console.log("new purchase:", newPurchase);
         dispatch(update_quantity({
             id: product.id,
+            name: product.name,
+            price: product.name,
             quantity: quantities[product.id],
           }));
         dispatch(add_purchase(newPurchase));
