@@ -34,7 +34,7 @@ const Customers = () => {
   return (
     <div className='container'>
       <div className='overflow-x-auto '>
-        <table className='min-w-full text-left mt-4'>
+        <table className='min-w-full text-left'>
           
           <thead className='border border-cyan-600 font-medium'>
             <tr>
@@ -45,7 +45,7 @@ const Customers = () => {
               <th className='px-6 py-4 underline'>Add Products</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className='mt-3'>
             {
               data.map((data)=> (
                 <tr key={data.customer.id} className='border border-cyan-600 mt-2'>

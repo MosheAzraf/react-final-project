@@ -1,0 +1,108 @@
+[
+    {
+        "product": {
+            "id": "1",
+            "name": "watch",
+            "price": 10.99,
+            "quantity": 5
+        },
+        "filterPurchsesByProduct": [
+            {
+                "id": "1",
+                "customerId": "1",
+                "productId": "1",
+                "quantity": 4,
+                "date": "2023-03-30"
+            },
+            {
+                "id": "2",
+                "customerId": "2",
+                "productId": "1",
+                "quantity": 1,
+                "date": "2023-03-29"
+            }
+        ],
+        "customerByPurchses": [
+            [
+                {
+                    "id": "1",
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "city": "New York"
+                }
+            ],
+            [
+                {
+                    "id": "2",
+                    "firstName": "Jane",
+                    "lastName": "Smith",
+                    "city": "Los Angeles"
+                }
+            ]
+        ]
+    },
+    {
+        "product": {
+            "id": "2",
+            "name": "ipad",
+            "price": 699,
+            "quantity": 10
+        },
+        "filterPurchsesByProduct": [
+            {
+                "id": "4",
+                "customerId": "1",
+                "productId": "2",
+                "quantity": 3,
+                "date": "2023-03-31"
+            }
+        ],
+        "customerByPurchses": [
+            [
+                {
+                    "id": "1",
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "city": "New York"
+                }
+            ]
+        ]
+    },
+    {
+        "product": {
+            "id": "3",
+            "name": "computer",
+            "price": 1999,
+            "quantity": 4
+        },
+        "filterPurchsesByProduct": [
+            {
+                "id": "3",
+                "customerId": "3",
+                "productId": "3",
+                "quantity": 3,
+                "date": "2023-03-28"
+            }
+        ],
+        "customerByPurchses": [
+            [
+                {
+                    "id": "3",
+                    "firstName": "Bob",
+                    "lastName": "Johnson",
+                    "city": "Chicago"
+                }
+            ]
+        ]
+    },
+    {
+        "product": {
+            "id": "4",
+            "name": "laptop",
+            "price": 200,
+            "quantity": 5
+        },
+        "filterPurchsesByProduct": [],
+        "customerByPurchses": []
+    }
+]
