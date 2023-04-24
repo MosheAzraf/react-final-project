@@ -29,15 +29,10 @@ const EditCustomer = () => {
 
   }, [id,purchases, customers, products])
   
-  const handleDelete = () => {
-    console.log(customerData.id);
-    // delete_customer, delete_purchases_byCustomerId 
+  const handleDelete = () => { 
     dispatch(delete_purchases_byCustomerId(id));
     dispatch(delete_customer(id));
     navigate("/products");
-    
-
-
   }
 
   const handleChange = (e) => {
@@ -67,14 +62,10 @@ const EditCustomer = () => {
     console.log(updateCustomer);
   }
 
-
-
-
-
   return (
     <div className='container'>
       <div className="grid grid-cols-2 mt-4 border border-teal-600">
-        <div className="border border-x-stone-700">
+        <div className="border border-x-stone-700 items-center justify-center space-x-4">
           <p className="text-teal-600 font-bold mb-4 mr-4">Customer Details</p>
           <div className="grid grid-cols-3">
             <p className="font-bold underline">id</p>
@@ -86,12 +77,11 @@ const EditCustomer = () => {
             <p>{customerData.firstName} {customerData.lastName}</p>
             <p>{customerData.city}</p>
           </div>
-
           <button className="text-blue-600 mr-2 hover:underline" onClick={()=> setShowEditData(!showEditData)}>Update Customer</button>
           <button className=" text-red-600 hover:underline" onClick={handleDelete}>Delete Customer</button>
         </div>
 
-        <div className="border border-x-stone-700">
+        <div className="border border-x-stone-700 items-center justify-center space-x-4">
           <p className="text-teal-600 font-bold mb-4">Customer Products</p>
           <div className="grid grid-cols-4">
             <p className="font-bold underline">Id</p>

@@ -8,11 +8,9 @@ import {update_quantity, add_purchase} from '../redux/actions/actionsIndex'
 
 const ProductShopList = ({customerId}) => {
     const products = useSelector(state => state.products.products);
-    console.log(products);
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const [quantities, setQuantities] = useState({});
-    const [totalPrice, setTotalPrice] = useState(0);
 
     const handleQuantityChange = (productId, quantity) => {
         setQuantities({...quantities, [productId]: quantity})
@@ -21,9 +19,7 @@ const ProductShopList = ({customerId}) => {
     const handlePurchase = (product) => {
         if(!quantities[product.id] || quantities[product.id] === 0){
             alert("cannot add product when quantity is 0")
-        } else {
-            console.log(quantities[product.id], product)
-        };
+        } 
 
         const date = new Date();
         const isoString = date.toISOString();
@@ -33,18 +29,13 @@ const ProductShopList = ({customerId}) => {
         const convertedPrice = parseInt(price);
 
         const newPurchase = {id: uuidv4(), customerId: customerId, productId:product.id,quantity:quantities[product.id], date: formattedDate, price: convertedPrice}
-        console.log("new purchase:", newPurchase);
+        //console.log("new purchase:", newPurchase);
         dispatch(update_quantity({
-            id: product.id,
-            name: product.name,
-            price: product.name,
-            quantity: quantities[product.id],
+            ...product, quantity: quantities[product.id]
           }));
         dispatch(add_purchase(newPurchase));
         setQuantities({ ...quantities, [product.id]: 0 });
         navigate('/purchases')
-
-        //
     }
 
 
@@ -52,30 +43,34 @@ const ProductShopList = ({customerId}) => {
 
   return (
     <div className='container'>
-            <table className='table-fixed w-full border border-cyan-600 rounded-lg shadow-xl mt-4'>
-                <thead>
-                    <tr className='underline'>
-                        <th className=' text-left p-2'>Id</th>
-                        <th className=' text-left p-2'>Name</th>
-                        <th className=' text-left p-2'>Price</th>
-                        <th className=' text-left p-2'>Quantity</th>
-                        <th className=' text-left p-2'>Add Item</th>
+        <div className='overflow-x-auto'>
+            <table className='min-w-full text-left'>
+                <thead className='border border-cyan-600 font-medium'>
+                    <tr >
+                        <th className='px-6 py-4 underline font-bold'>Id</th>
+                        <th className='px-6 py-4 underline font-bold'>Name</th>
+                        <th className='px-6 py-4 underline font-bold'>Price</th>
+                        <th className='px-6 py-4 underline font-bold'>Quantity in stock</th>
+                        <th className='px-6 py-4 underline font-bold'>Quantity</th>
+                        <th className='px-6 py-4 underline font-bold'>Add Item</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className='mt-3'>
                     {
                         products.map((product)=> (
-                            <tr className=' p-2' key={product.id}>
-                                <td className=' p-2'>{product.id}</td>
-                                <td className=' p-2'>{product.name}</td>
-                                <td className=' p-2'>{product.price}</td>
-                                <td className=' p-2'><input type="number" min="0" max={product.quantity} value={quantities[product.id] || 0} onChange={(e) => handleQuantityChange(product.id, e.target.value)}/></td>
-                                <td className=' p-2'><button onClick={()=> handlePurchase(product)}>save</button></td>
+                            <tr className='border border-cyan-600 mt-2 hover:bg-cyan-200' key={product.id}>
+                                <td className='whitespace-nowrap px-6 py-4 font-medium'>{product.id}</td>
+                                <td className='whitespace-nowrap px-6 py-4'>{product.name}</td>
+                                <td className='whitespace-nowrap px-6 py-4'>{`${product.price}$`}</td>
+                                <td className='whitespace-nowrap px-6 py-4'>{product.quantity === 0 ? <p className='text-rose-600'> out of stock</p> : product.quantity}</td>
+                                <td className='whitespace-nowrap px-6 py-4'><input className='border border-black rounded-lg' type="number" min="0" max={product.quantity} value={quantities[product.id] || 0} onChange={(e) => handleQuantityChange(product.id, e.target.value)}/></td>
+                                <td className='whitespace-nowrap px-6 py-4'><button className='text-cyan-600 hover:underline' onClick={()=> handlePurchase(product)}>save</button></td>
                             </tr>
                         ))
                     }
                 </tbody>
             </table>
+        </div>
     </div>
   )
 }

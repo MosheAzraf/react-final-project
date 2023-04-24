@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Products = () => {
   const purchases = useSelector((state) => state.purchases.purchases);
   const customers = useSelector((state) => state.customers.customers);
   const products = useSelector((state) => state.products.products);
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const data = products.map((product) => {
@@ -24,13 +26,28 @@ const Products = () => {
       );
       return { product, customerWhoBoughtIt, filterPurchasesByProduct };
     });
-    //"productInfo": product, "Purchases": filterPurchasesByProduct, "customers": customersByPurchases
-    console.log(data);
+    // console.log(data);
     setData(data);
   }, [customers, products, purchases]);
 
+  const navigateToShop = (customer)=> {
+    navigate(`/shop/${customer.id}`);
+  }
+
+  const navigateToEditCustomer = (customer)=> {
+    navigate(`/editcustomer/${customer.id}`)
+  }
+
+  const navigateToEditProduct = (product)=> {
+    navigate(`/editproduct/${product.id}`)
+  }
+
+
   return (
     <div className="container">
+      <div className="flex items-center justify-center">
+            <h1>Total amount of purchased products: {purchases.length}</h1>
+        </div>
       <div className="overflow-x-auto">
         <table className="min-w-full text-left">
           <thead className="border border-cyan-600 font-medium">
@@ -46,7 +63,7 @@ const Products = () => {
           </thead>
           <tbody className="mt-3">
             {data.map((data) => (
-              <tr key={data.product.id} className="border border-cyan-600 ">
+              <tr key={data.product.id} className="border border-cyan-600 hover:bg-cyan-200">
                 <td className="whitespace-nowrap px-6 py-4 font-medium">
                   {data.product.id}
                 </td>
@@ -54,7 +71,7 @@ const Products = () => {
                   {data.product.name}
                 </td>
                 <td className="whitespace-nowrap px-6 py-4">
-                  {data.product.price}
+                  {`${data.product.price}$`}
                 </td>
                 <td className="whitespace-nowrap px-6 py-4">
                   {data.product.quantity}
@@ -69,10 +86,10 @@ const Products = () => {
                       <ul key={customer.id}>
                         <li>
                           {`${customer.firstName} ${customer.lastName}`}{" "}
-                          <button className="ml-4 text-cyan-600 hover:underline">
+                          <button onClick={()=> navigateToEditCustomer(customer)} className="ml-4 text-cyan-600 hover:underline">
                             Edit Customer
                           </button>{" "}
-                          <button className="ml-2 text-cyan-600 hover:underline">
+                          <button onClick={()=> navigateToShop(customer)} className="ml-2 text-cyan-600 hover:underline">
                             Add Products
                           </button>{" "}
                         </li>
@@ -81,12 +98,12 @@ const Products = () => {
                   )}
                 </td>
                 <td className="whitespace-nowrap px-6 py-4">
-                  <button className="text-cyan-600 hover:underline">
+                  <button onClick={()=> navigateToEditProduct(data.product)} className="text-cyan-600 hover:underline">
                     Edit
                   </button>{" "}
                 </td>
                 <td className="whitespace-nowrap px-6 py-4">
-                  {data.filterPurchasesByProduct.length === 0 ? (
+                  {data.customerWhoBoughtIt.length === 0 ? (
                     <p>No purchases yet</p>
                   ) : (
                     data.filterPurchasesByProduct.map((purchase) => (

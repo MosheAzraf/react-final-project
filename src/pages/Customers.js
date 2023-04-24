@@ -17,7 +17,6 @@ const Customers = () => {
       return {customer, customerPurchases, customerProducts }
      })
      setData(combinedData);
-     console.log(combinedData)
     },[customers, purchases, products])
 
   const navigateToProduct = (product) => {
@@ -26,6 +25,10 @@ const Customers = () => {
 
   const navigateToShop = (customer) => {
     navigate(`/shop/${customer.id}`)
+  }
+
+  const navigateToEditCustomer = (customer) => {
+    navigate(`/editcustomer/${customer.id}`)
   }
 
 
@@ -48,9 +51,9 @@ const Customers = () => {
           <tbody className='mt-3'>
             {
               data.map((data)=> (
-                <tr key={data.customer.id} className='border border-cyan-600 mt-2'>
+                <tr key={data.customer.id} className='border border-cyan-600 mt-2 hover:bg-cyan-200'>
                   <td className='whitespace-nowrap px-6 py-4 font-medium'>{data.customer.id}</td>
-                  <td className='whitespace-nowrap px-6 py-4'>{`${data.customer.firstName} ${data.customer.lastName}`}</td>
+                  <td className='whitespace-nowrap px-6 py-4'>{`${data.customer.firstName} ${data.customer.lastName}`} <button onClick={()=> navigateToEditCustomer(data.customer)} className="ml-4 text-cyan-600 hover:underline">Edit Customer</button></td>
                   <td className='whitespace-nowrap px-6 py-4'>{data.customerProducts.map((product)=> (<ul key={product.id}><li onClick={()=>navigateToProduct(product)} className=' text-cyan-600 hover:underline cursor-pointer'>{product.name}</li></ul>))}</td>
                   <td className='whitespace-nowrap px-6 py-4'>{data.customerPurchases.map((purchase)=> (<ul key={purchase.id}><li>{purchase.date}</li> </ul>))}</td>
                   <td className='whitespace-nowrap px-6 py-4'><button onClick={()=> navigateToShop(data.customer)} className=' text-cyan-700 hover:underline'>Add Products</button></td>
