@@ -41,6 +41,8 @@ In this project:
 
 ## Screenshots
 <img src="/public/gifs/Main.gif" width="550"/>
+<img src="/public/gifs/Purchase procces.gif" width="550"/>
+<img src="/public/gifs/Update Product.gif" width="550"/>
 
 
 
