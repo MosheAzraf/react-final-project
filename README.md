@@ -40,7 +40,7 @@ In this project:
 
 
 ## Screenshots
-<img src="/public/gifs/Main.gif" width="400"/>
+<img src="/public/gifs/Main.gif" width="550"/>
 
 
 
