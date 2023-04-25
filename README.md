@@ -34,11 +34,6 @@ In this project:
 - Tailwind
 
 
-## Libraries in this project:
-- React Redux
-- Tailwind
-
-
 ## Screenshots
 <img src="/public/gifs/Main.gif" width="550"/>
 <img src="/public/gifs/Purchase procces.gif" width="550"/>
